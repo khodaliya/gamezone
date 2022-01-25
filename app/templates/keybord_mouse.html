@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Keybord Mouse{% endblock title %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/gaminglaptop.css' %}">
+
+<div class="container mt-100">
+    <div class="row">
+        {% for product in keybordmouse %}
+        <div class="col-md-4 col-sm-6">
+            <div class="card mb-30" style="height: 490px;">
+                <a class="card-img-tiles" href="{% url 'products' product.slug %}" data-abc="true">
+                    <div class="inner">
+                        <div class="main-img"><img src={{product.img1.url}} alt="Category"></div>
+                        <div class="thumblist"><img src={{product.img1.url}} alt="Category"><img src={{product.img1.url}} alt="Category"></div>
+                    </div>
+                    
+                    <div class="card-body text-center ">
+                        <h4 class="card-title text-black">{{product.title}}</h4>
+                    </a>
+                    <p class="text-muted">RS.{{product.selling_price}}</p><a class="btn btn-outline-secondary btn-sm" target="_blank" href="{{product.amazon}}" data-abc="true">BUY NOW</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<nav aria-label="Page navigation example" class="mt-5">
+    <ul class="pagination justify-content-center">
+        {% if keybordmouse.has_previous %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{keybordmouse.previous_page_number}}">Previous</a>
+        </li>
+        {% endif %} {% for n in totalpagelist %}
+        <li class="page-item"><a class="page-link" href="?page={{n}}">{{n}}</a></li>
+        {% endfor %} {% if keybordmouse.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{keybordmouse.next_page_number}}">Next</a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>
+{% endblock body %}

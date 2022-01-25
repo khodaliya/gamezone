@@ -1,0 +1,75 @@
+{% extends 'base.html' %} {% load static %} {% block title %}{{laptops.title}}{% endblock title %} {% block body %} {% load%}
+<link rel="stylesheet" href="{% static 'css/pro_detail.css' %}"> {% load social_share %}
+<!-- <link rel="stylesheet" href="{% static 'css/style2.css' %}"> {% load social_share %} -->
+
+<div class="card">
+    <div class="row g-0">
+        <div class="col-md-6 border-end">
+            <div class="d-flex flex-column justify-content-center">
+                <div class="main_image"> <img src="{{laptops.img1.url}}" id="main_product_image" width="360px"> </div>
+                <div class="thumbnail_images">
+                    <ul id="thumbnail">
+                        <li><img onclick="changeImage(this)" src="{{laptops.img1.url}}" width="70"></li>
+                        <li><img onclick="changeImage(this)" src="{{laptops.img2.url}}" width="70"></li>
+                        <li><img onclick="changeImage(this)" src="{{laptops.img3.url}}" width="70"></li>
+                        <li><img onclick="changeImage(this)" src="{{laptops.img4.url}}" width="70"></li>
+                    </ul>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="p-3 right-side">
+                <h2>{{laptops.title}}</h2>
+                <p>{{laptops.p_tag}}</p>
+                <hr>
+                <div class="container">
+                    <h4>Share Post</h4>
+                    <button class="btn-sm btn-secondary">{% post_to_whatsapp object_or_url "<span style='text-decoration: white; color: white; font-size: 12px;'>WhatsApp </span> " %}</button>
+                    <button class="btn-sm btn-secondary">{% post_to_facebook object_or_url "<span style='text-decoration: white; color: white;  font-size: 12px;'>facebook</span>" %}</button>
+                    <div>
+                        <span>{{laptops.pro_detail | safe}}</span>
+                        <div class="buttons d-flex flex-row mt-1  gap-3">
+                            <a href="{{laptops.amazon}}" target="_blank"><button class="btn btn-outline-dark">BUY NOW</button></a>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container-fluid py-2">
+    <img src="{{laptops.bg_img01.url}}" class="img-fluid" width="100%" alt="...">
+    <img src="{{laptops.bg_img02.url}}" class="img-fluid" width="100%" alt="...">
+</div>
+
+
+
+
+<div class="container card" style="background-color:white">
+    <div class="row g-0">
+        <div class="row col-md-10 col-sm-12">
+            {{laptops.content | safe}}
+        </div>
+    </div>
+</div>
+
+
+<div class="container align-items-center">
+    <img src="{{laptops.bg_img03.url}}" class="img-fluid" width="100%" alt="...">
+</div>
+
+
+
+
+{% endblock body %}
